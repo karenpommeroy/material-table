@@ -569,6 +569,11 @@ export default class MaterialTable extends React.Component {
           thirdSortClick={props.options.thirdSortClick}
           treeDataMaxLevel={this.state.treeDataMaxLevel}
           options={props.options}
+          fieldSize={props.options.fieldSize}
+          fieldSize={props.options.fieldVariant}
+          textSearch={props.options.textSearch}
+          customActions={props.options.customActions}
+          customActionsAlignment={props.options.customActionsAlignment}
         />
       }
       <props.components.Body
@@ -657,10 +662,15 @@ export default class MaterialTable extends React.Component {
               data={this.state.data}
               renderData={this.state.renderData}
               search={props.options.search}
+              textSearch={props.options.textSearch}
+              customActions={props.options.customActions}
+              fieldVariant={props.options.fieldVariant}
+              fieldSize={props.options.fieldSize}
               showTitle={props.options.showTitle}
               showTextRowsSelected={props.options.showTextRowsSelected}
               toolbarButtonAlignment={props.options.toolbarButtonAlignment}
               searchFieldAlignment={props.options.searchFieldAlignment}
+              customActionsAlignment={props.options.customActionsAlignment}
               searchText={this.state.searchText}
               searchFieldStyle={props.options.searchFieldStyle}
               title={props.title}

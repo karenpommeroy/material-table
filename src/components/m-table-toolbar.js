@@ -63,6 +63,8 @@ export class MTableToolbar extends React.Component {
         <TextField
           className={this.props.searchFieldAlignment === 'left' && this.props.showTitle === false ? null : this.props.classes.searchField}
           value={this.props.searchText}
+		      variant={this.props.fieldVariant}
+		      size={this.props.fieldSize}
           onChange={event => this.props.onSearchChanged(event.target.value)}
           placeholder={localization.searchPlaceholder}          
           InputProps={{
@@ -86,6 +88,58 @@ export class MTableToolbar extends React.Component {
             style: this.props.searchFieldStyle
           }}
         />
+      );
+    }
+    else {
+      return null;
+    }
+  }
+  
+  renderTextSearch() {
+    const localization = { ...MTableToolbar.defaultProps.localization, ...this.props.localization };
+    if (this.props.textSearch) {
+      return (
+        <TextField
+          className={this.props.searchFieldAlignment === 'left' && this.props.showTitle === false ? null : this.props.classes.searchField}
+          value={this.props.searchText}
+          onChange={event => this.props.onSearchChanged(event.target.value)}
+          placeholder={localization.searchPlaceholder}
+          variant={this.props.fieldVariant}
+          size={this.props.fieldSize}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Tooltip title={localization.searchTooltip}>
+                  <this.props.icons.Search color="inherit" fontSize="small" />
+                </Tooltip>
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  disabled={!this.props.searchText}
+                  onClick={() => this.props.onSearchChanged("")}
+                >
+                  <this.props.icons.ResetSearch color="inherit" fontSize="small" />
+                </IconButton>
+              </InputAdornment>
+            ),
+            style: this.props.searchFieldStyle
+          }}
+        />
+      );
+    }
+    else {
+      return null;
+    }
+  }
+  
+  renderCustomActions() {
+    if (this.props.customActions) {
+      return (
+        <div>
+          { this.props.customActions.map((item) => item()) }
+        </div>
       );
     }
     else {
@@ -216,9 +270,13 @@ export class MTableToolbar extends React.Component {
       <Toolbar className={classNames(classes.root, { [classes.highlight]: this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 })}>
         { title && this.renderToolbarTitle(title)}
         {this.props.searchFieldAlignment === 'left' && this.renderSearch()}
+        {this.props.searchFieldAlignment === 'left' && this.renderTextSearch()}
+        {this.props.customActionsAlignment === 'left' && this.renderCustomActions()}
         {this.props.toolbarButtonAlignment === 'left' && this.renderActions()}
         <div className={classes.spacer} />
         {this.props.searchFieldAlignment === 'right' && this.renderSearch()}
+        {this.props.searchFieldAlignment === 'right' && this.renderTextSearch()}
+        {this.props.customActionsAlignment === 'right' && this.renderCustomActions()}
         {this.props.toolbarButtonAlignment === 'right' && this.renderActions()}
       </Toolbar >
     );
@@ -241,10 +299,15 @@ MTableToolbar.defaultProps = {
     searchPlaceholder: 'Search'
   },
   search: true,
+  textSearch: false,
+  fieldVariant: "outlined",
+  fieldSize: "small",
+  customActions: [],
   showTitle: true,
   showTextRowsSelected: true,
   toolbarButtonAlignment: 'right',
   searchFieldAlignment: 'right',
+  customActionsAlignment: 'right',
   searchText: '',
   selectedRows: [],
   title: 'No Title!'
@@ -260,6 +323,10 @@ MTableToolbar.propTypes = {
   onColumnsChanged: PropTypes.func.isRequired,
   onSearchChanged: PropTypes.func.isRequired,
   search: PropTypes.bool.isRequired,
+  textSearch: PropTypes.bool.isRequired,
+  fieldVariant: PropTypes.string.isRequired,
+  fieldSize: PropTypes.string.isRequired,
+  customActions: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   searchFieldStyle: PropTypes.object,
   searchText: PropTypes.string.isRequired,
   selectedRows: PropTypes.array,
@@ -268,6 +335,7 @@ MTableToolbar.propTypes = {
   showTextRowsSelected: PropTypes.bool.isRequired,
   toolbarButtonAlignment: PropTypes.string.isRequired,
   searchFieldAlignment: PropTypes.string.isRequired,
+  customActionsAlignment: PropTypes.string.isRequired,
   renderData: PropTypes.array,
   data: PropTypes.array,
   exportAllData: PropTypes.bool,

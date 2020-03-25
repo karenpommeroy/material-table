@@ -1,6 +1,7 @@
-import * as React from 'react';
-import { IconProps } from '@material-ui/core/Icon';
-import { string } from 'prop-types';
+import { string } from "prop-types";
+import * as React from "react";
+
+import { IconProps } from "@material-ui/core/Icon";
 
 export interface MaterialTableProps<RowData extends object> {
   actions?: (Action<RowData> | ((rowData: RowData) => Action<RowData>))[];
@@ -193,6 +194,8 @@ export interface Options {
   actionsColumnIndex?: number;
   addRowPosition?: ('first' | 'last');
   columnsButton?: boolean;
+  customActions?: any[];
+  customActionsAlignment?: 'left' | 'right';
   defaultExpanded?: boolean | ((rowData: any) => boolean);
   debounceInterval?: number;
   detailPanelType?: ('single' | 'multiple');
@@ -204,6 +207,8 @@ export interface Options {
   exportDelimiter?: string;
   exportFileName?: string;
   exportCsv?: (columns: any[], renderData: any[]) => void;
+  fieldVariant?: ('outlined' | 'contained' | 'standard');
+  fieldSize?: ('small' | 'medium');
   filtering?: boolean;
   filterCellStyle?: React.CSSProperties;
   fixedColumns?: { left?: number; right?: number; };
@@ -227,6 +232,8 @@ export interface Options {
   showSelectAllCheckbox?: boolean;
   showTitle?: boolean;
   showTextRowsSelected?: boolean;
+  fieldVariant?: ('outlined' | 'contained' | 'standard');
+  fieldSize?: ('small' | 'medium');
   search?: boolean;
   searchText?: string;
   searchFieldAlignment?: 'left' | 'right';
@@ -235,6 +242,7 @@ export interface Options {
   selectionProps?: any | ((data: any) => any);
   sorting?: boolean;
   tableLayout?: 'auto' | 'fixed';
+  textSearch?: boolean;
   thirdSortClick?: boolean;
   toolbar?: boolean;
   toolbarButtonAlignment?: 'left' | 'right';
