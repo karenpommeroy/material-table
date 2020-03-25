@@ -17,6 +17,7 @@ export const propTypes = {
     disabled: PropTypes.bool,
     hidden: PropTypes.bool,
   })])),
+
   columns: PropTypes.arrayOf(PropTypes.shape({
     cellStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     currencySetting: PropTypes.shape({
@@ -114,10 +115,10 @@ export const propTypes = {
     actionsColumnIndex: PropTypes.number,
     addRowPosition: PropTypes.oneOf(['first', 'last']),
     columnsButton: PropTypes.bool,
-	  customActions: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.func])),
+    customActions: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.func])),
     customActionsAlignment: PropTypes.oneOf(['left', 'right']),
-	  fieldVariant: PropTypes.oneOf(['outlined', 'contained', 'standard']),
-	  fieldSize: PropTypes.oneOf(['medium', 'small']),
+    fieldVariant: PropTypes.oneOf(['outlined', 'contained', 'standard']),
+    fieldSize: PropTypes.oneOf(['medium', 'small']),
     defaultExpanded: PropTypes.bool | PropTypes.func,
     debounceInterval: PropTypes.number,
     detailPanelType: PropTypes.oneOf(['single', 'multiple']),
@@ -146,7 +147,7 @@ export const propTypes = {
     search: PropTypes.bool,
     fieldSearch: PropTypes.bool,
     searchText: PropTypes.string,
-	  textSearch: PropTypes.bool,
+    textSearch: PropTypes.bool,
     toolbarButtonAlignment: PropTypes.oneOf(['left', 'right']),
     searchFieldAlignment: PropTypes.oneOf(['left', 'right']),
     searchFieldStyle: PropTypes.object,

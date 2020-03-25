@@ -570,7 +570,7 @@ export default class MaterialTable extends React.Component {
           treeDataMaxLevel={this.state.treeDataMaxLevel}
           options={props.options}
           fieldSize={props.options.fieldSize}
-          fieldSize={props.options.fieldVariant}
+          fieldVariant={props.options.fieldVariant}
           textSearch={props.options.textSearch}
           customActions={props.options.customActions}
           customActionsAlignment={props.options.customActionsAlignment}

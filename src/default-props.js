@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Icon from '@material-ui/core/Icon';
 import Paper from '@material-ui/core/Paper';
@@ -17,6 +17,7 @@ const OverlayLoading = props => (
 OverlayLoading.propTypes = {
   theme: PropTypes.any
 };
+
 
 const Container = (props) => <Paper elevation={2} {...props} />;
 
@@ -69,10 +70,10 @@ export const defaultProps = {
     actionsColumnIndex: 0,
     addRowPosition: 'last',
     columnsButton: false,
-	  fieldVariant: 'standard',
-	  fieldSize: 'small',
-	  textSearch: false,
-	  customActionsField: [],
+    fieldVariant: 'standard',
+    fieldSize: 'small',
+    textSearch: false,
+    customActionsField: [],
     detailPanelType: 'multiple',
     debounceInterval: 200,
     doubleHorizontalScroll: false,
