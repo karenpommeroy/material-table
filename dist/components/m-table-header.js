@@ -166,15 +166,14 @@ var MTableHeader = /*#__PURE__*/ (function (_React$Component) {
           _this.props.scrollWidth
         );
         var style = (0, _objectSpread2.default)(
-          {},
-          _this.props.headerStyle,
-          columnDef.headerStyle,
           {
             boxSizing: "border-box",
             width: width,
             maxWidth: columnDef.maxWidth,
             minWidth: columnDef.minWidth,
-          }
+          },
+          _this.props.headerStyle,
+          columnDef.headerStyle
         );
 
         if (
